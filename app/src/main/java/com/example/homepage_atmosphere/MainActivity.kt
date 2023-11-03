@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -64,7 +66,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ScaffoldCompose()
+            HomePage_AtmosphereTheme {
+                ScaffoldCompose()
+                SongList(print(""))
+            }
+
         }
     }
 }
@@ -76,38 +82,18 @@ fun ScaffoldCompose(){
         bottomBar = { BottomAppBarCompose()}
     ){ contentPadding ->
 
-    Card(elevation = cardElevation(defaultElevation = 2.dp)) {
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .padding(contentPadding)
-            .padding(horizontal = 4.dp)
-            .height(200.dp)
-            .background(color = Color.White),
+        Card(elevation = cardElevation(defaultElevation = 2.dp)) {
+            LazyColumn(modifier = Modifier
+                .fillMaxSize()
+                .padding(contentPadding)
+                .padding(horizontal = 4.dp)
+                .height(200.dp)
+                .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally) {
 
+            }
+            }
         }
-    }
 
     }
-}
-
-@Composable
-fun SongsList(song: SongsList) {
-    Card(elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Spacer(modifier = Modifier.width(30.dp))
-            Text(text = "${song.id}",
-                fontSize = 20.sp)
-            Text(text = song.song,
-                fontSize = 20.sp)
-        }
-    }
-    Divider()
-}
-class SongsList (var id: Int, var song: String)
 
