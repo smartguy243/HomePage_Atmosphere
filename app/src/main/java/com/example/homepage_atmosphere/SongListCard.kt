@@ -95,7 +95,7 @@ fun SongList(s: String) {
 }
 
 @Composable
-fun SongsListCard(songTitle: SongsList) {
+fun SongsList(songTitle: SongsList) {
     Card(elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)) {
         Row(
             modifier = Modifier
